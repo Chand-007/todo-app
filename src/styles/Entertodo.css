@@ -29,6 +29,7 @@ h1{
     font-size: 1.5rem;
     text-transform:uppercase;
     font-weight: 800;
+    color:red;
 }
 
 
@@ -50,13 +51,18 @@ h1{
 .inputs-container .task-priority{
     display:flex;
     column-gap:10px;
+    align-items: center;
+    justify-content: center;
+    width:200px;
+    height:30px;
 }
 
-.inputs-container .task-priority label{
-    display:flex;
-    column-gap:2px; 
-}
-
-.inputs-container .task-priority input{
+.task-priority label input{
     width:20px;
+    margin-top:-5px;
+}
+
+.task-priority label{
+    display:flex;
+    column-gap: 5px;
 }
