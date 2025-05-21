@@ -7,6 +7,7 @@ export default function Entertodo(){
     const [priority,setPriority] = useState({top:false,medium:false,low:false})
     const [startDate,setStartDate] = useState("")
     const [endDate,setEndDate] = useState("")
+    const [todos,setTodos] = useState([])
 
     function changeTitle(e){
         setTitle(e.target.value)
@@ -17,19 +18,16 @@ export default function Entertodo(){
     }
 
     function topPriority(e){
-        console.log(e.target)
         const newTopPriority = {top:true,medium:false,low:false}
         setPriority(newTopPriority)
     }
 
     function mediumPriority(e){
-        console.log(e.target)
         const newMediumPriority = {top:false,medium:true,low:false}
         setPriority(newMediumPriority)
     }
 
     function lowPriority(e){
-        console.log(e.target)
         const newLowPriority = {top:false,medium:false,low:true}
         setPriority(newLowPriority)
     }
@@ -44,6 +42,17 @@ export default function Entertodo(){
 
     function handleClick(){
         console.log(title,notes,priority,startDate,endDate)
+        const toBesaved = {title:title,note:notes,priority:priority,StartDate:startDate,EndDate:endDate}
+        setTodos((prev)=>[...prev,toBesaved])
+        setEndDate("")
+        setNotes("")
+        setPriority({top:false,medium:false,low:false})
+        setStartDate("")
+        setTitle("")
+    }
+
+    function handleCheckbox(e){
+        
     }
 
     return(
@@ -70,7 +79,7 @@ export default function Entertodo(){
                 <div className='inputs-container'>
                     <input type='text' value={title} onChange={changeTitle}/>
                     <input type='text' value={notes} onChange={changeNotes}/>
-                    <div className='task-priority'>
+                    <div className='task-priority' onClick={handleCheckbox}>
                     <label>
                         Top
                         <input type="checkbox" className="top-priority" value={priority.top} onChange={topPriority}/>
