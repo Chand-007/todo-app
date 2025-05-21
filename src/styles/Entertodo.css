@@ -1,0 +1,62 @@
+.enter-todo{
+    width:1000px;
+    height:500px;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+h1{
+    color:brown;
+}
+
+.label-form{
+    margin-top:50px;
+    display: flex;
+    column-gap: 20px;
+}
+
+.labels-container{
+    display:flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: flex-start;
+}
+
+.labels-container label p{
+    margin-bottom:20px;
+    font-size: 1.5rem;
+    text-transform:uppercase;
+    font-weight: 800;
+}
+
+
+.inputs-container{
+    display:flex;
+    flex-direction:column;
+    row-gap:10px;
+    align-items: flex-end;
+}
+
+
+.inputs-container input{
+    width:200px;
+    height:30px;
+    margin-bottom:18px;
+}
+
+
+.inputs-container .task-priority{
+    display:flex;
+    column-gap:10px;
+}
+
+.inputs-container .task-priority label{
+    display:flex;
+    column-gap:2px; 
+}
+
+.inputs-container .task-priority input{
+    width:20px;
+}
