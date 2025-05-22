@@ -3,6 +3,8 @@
     height:100vh;
     background-image: linear-gradient(pink,purple);
     display:flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    row-gap:100px;
 }
