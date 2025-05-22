@@ -1,13 +1,14 @@
 import '../styles/Entertodo.css'
 import { useState } from 'react'
-export default function Entertodo(){
+var id = 0
+export default function Entertodo({setTodos}){
 
     const [title,setTitle] = useState("")
     const [notes,setNotes] = useState("")
-    const [priority,setPriority] = useState({top:false,medium:false,low:false})
+    const [priority,setPriority] = useState("")
     const [startDate,setStartDate] = useState("")
     const [endDate,setEndDate] = useState("")
-    const [todos,setTodos] = useState([])
+    
 
     function changeTitle(e){
         setTitle(e.target.value)
@@ -18,18 +19,15 @@ export default function Entertodo(){
     }
 
     function topPriority(e){
-        const newTopPriority = {top:true,medium:false,low:false}
-        setPriority(newTopPriority)
+        setPriority("Top")
     }
 
     function mediumPriority(e){
-        const newMediumPriority = {top:false,medium:true,low:false}
-        setPriority(newMediumPriority)
+        setPriority("Medium")
     }
 
     function lowPriority(e){
-        const newLowPriority = {top:false,medium:false,low:true}
-        setPriority(newLowPriority)
+        setPriority("Low")
     }
 
     function changeStartDate(e){
@@ -42,11 +40,11 @@ export default function Entertodo(){
 
     function handleClick(){
         console.log(title,notes,priority,startDate,endDate)
-        const toBesaved = {title:title,note:notes,priority:priority,StartDate:startDate,EndDate:endDate}
+        const toBesaved = {id:++id,title:title,note:notes,priority:priority,StartDate:startDate,EndDate:endDate}
         setTodos((prev)=>[...prev,toBesaved])
         setEndDate("")
         setNotes("")
-        setPriority({top:false,medium:false,low:false})
+        setPriority("")
         setStartDate("")
         setTitle("")
     }
@@ -82,17 +80,17 @@ export default function Entertodo(){
                     <div className='task-priority' onClick={handleCheckbox}>
                     <label>
                         Top
-                        <input type="checkbox" className="top-priority" value={priority.top} onChange={topPriority}/>
+                        <input type="checkbox" className="top-priority" value={priority} onChange={topPriority}/>
                     </label>
                     
                     <label>
                         Medium
-                        <input type="checkbox" className="medium-priority" value={priority.medium} onChange={mediumPriority}/>
+                        <input type="checkbox" className="medium-priority" value={priority} onChange={mediumPriority}/>
                     </label>
 
                     <label>
                         Low
-                        <input type="checkbox" className="low-priority" value={priority.low} onChange={lowPriority}/>
+                        <input type="checkbox" className="low-priority" value={priority} onChange={lowPriority}/>
                     </label>
                     </div>
                     <input type="date"value={startDate} onChange={changeStartDate}/>
