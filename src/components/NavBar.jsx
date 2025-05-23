@@ -4,7 +4,7 @@ import '../styles/NavBar.css'
 export default function NavBar({handleDisplayTodo}){
     const todayDate = new Date()
     const datePart = todayDate.getDate()
-    const monthPart = todayDate.getDay()+1
+    const monthPart = todayDate.getDay()
     const yearPart = todayDate.getFullYear()
     const fullDate = datePart+":"+monthPart+":"+yearPart
 

@@ -1,13 +1,8 @@
 import '../styles/Entertodo.css'
 import { useState } from 'react'
 var id = 0
-export default function Entertodo({setTodos}){
+export default function Entertodo({setTodos,todos,title,setTitle,notes,setNotes,priority,setPriority,startDate,setStartDate,endDate,setEndDate,edit,setEdit,editId,setEditId,setShowTodo}){
 
-    const [title,setTitle] = useState("")
-    const [notes,setNotes] = useState("")
-    const [priority,setPriority] = useState("")
-    const [startDate,setStartDate] = useState("")
-    const [endDate,setEndDate] = useState("")
     
 
     function changeTitle(e){
@@ -39,14 +34,29 @@ export default function Entertodo({setTodos}){
     }
 
     function handleClick(){
-        console.log(title,notes,priority,startDate,endDate)
-        const toBesaved = {id:++id,title:title,note:notes,priority:priority,StartDate:startDate,EndDate:endDate}
-        setTodos((prev)=>[...prev,toBesaved])
-        setEndDate("")
-        setNotes("")
-        setPriority("")
-        setStartDate("")
-        setTitle("")
+        if(!edit){
+            console.log(title,notes,priority,startDate,endDate)
+            const toBesaved = {id:++id,title:title,note:notes,priority:priority,StartDate:startDate,EndDate:endDate}
+            setTodos((prev)=>[...prev,toBesaved])
+            setEndDate("")
+            setNotes("")
+            setPriority("")
+            setStartDate("")
+            setTitle("")
+            return
+        }
+        else{
+            setTodos(todos.filter(todo=>todo.id !== editId))
+            const editedToBeSaved = {id:editId,title:title,note:notes,priority:priority,StartDate:startDate,EndDate:endDate}
+            setTodos((prev)=>[...prev,editedToBeSaved])
+            setEndDate("")
+            setNotes("")
+            setPriority("")
+            setStartDate("")
+            setTitle("")
+            setShowTodo(prev => !prev)
+            return
+        }
     }
 
     function handleCheckbox(e){
@@ -55,7 +65,7 @@ export default function Entertodo({setTodos}){
 
     return(
         <div className='enter-todo'>
-            <h1>Enter Todo</h1>
+            <h1>{edit?"Edit":"Enter"} Todo</h1>
             <div className="label-form">
                 <div className='labels-container'>
                     <label>

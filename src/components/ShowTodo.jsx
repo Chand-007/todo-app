@@ -1,6 +1,6 @@
 import '../styles/ShowTodo.css'
 
-export default function ShowTodo({todos,handleDeleteTodo}){
+export default function ShowTodo({todos,handleDeleteTodo,handleEditTodo}){
     return(
 
         <div className="show-todo-container">
@@ -15,7 +15,7 @@ export default function ShowTodo({todos,handleDeleteTodo}){
                             <div className="todo-element-start-date">Start Date: {todo.StartDate}</div>
                             <div className="todo-element-end-date">End Date: {todo.EndDate}</div>
                             <div className="edit-delete-container">
-                                <button className="edit-todo-button">Edit</button>
+                                <button className="edit-todo-button"onClick={()=>handleEditTodo(todo)}>Edit</button>
                                 <button className="delete-todo-button" onClick={()=>handleDeleteTodo(todo)}>Delete</button>
                             </div>
                         </div>
